@@ -1,11 +1,25 @@
 def first
-  "first part"
+    calculate_passwords.size
 end
 
 def second
-  "second part"
+    passwords = calculate_passwords.select do |digits|
+      digits.group_by{ |n| n }.values.map(&:size).any? { |size| size == 2 }
+    end
+
+    passwords.size
 end
 
-def input
-  open('inputs/y2019/day_four.txt').map { |line|  }
+def calculate_passwords
+  (235741..706948).reduce([]) do |acc, num|
+    digits = num.to_s.split("").map(&:to_i)
+
+    if digits.reduce(0){|acc,n| acc.nil? ? nil : n >= acc ? n : nil}
+      if !digits.group_by{ |n| n }.values.map(&:size).select{ |size| size >= 2 }.empty?
+        acc << digits
+      end
+    end
+
+    acc
+  end
 end

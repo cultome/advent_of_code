@@ -1,9 +1,18 @@
 def first
-  "first part"
+  self.class.disable_prompt = true
+  program = File.read("input/five_one.txt").chomp.split(",").map(&:to_i)
+
+  state = execute_intcode(program, version: 2)
+
+  respond state[:last_output]
 end
 
 def second
-  "second part"
+  self.class.disable_prompt = true
+  program = File.read("input/five_two.txt").chomp.split(",").map(&:to_i)
+
+  state = execute_intcode(program, version: 2)
+  respond state[:last_output]
 end
 
 def input
