@@ -1,13 +1,13 @@
 def first
-  input.select do |low, high, chr, passwd|
+  input.count do |low, high, chr, passwd|
     (low..high).include? passwd.count(chr)
-  end.size
+  end
 end
 
 def second
-  input.select do |low, high, chr, passwd|
+  input.count do |low, high, chr, passwd|
     (passwd[low - 1] == chr) ^ (passwd[high - 1] == chr)
-  end.size
+  end
 end
 
 def input
