@@ -1,11 +1,23 @@
+require 'advent_of_code/y2019/calculator'
+
+include Calculator
+
 def first
-  "first part"
+  @relative_base = 0
+
+  state = execute_intcode(input, version: 4)
+
+  state[:last_output]
 end
 
 def second
-  "second part"
+  @relative_base = 0
+
+  state = execute_intcode(input, version: 4)
+
+  state[:last_output]
 end
 
 def input
-  open('inputs/y2019/day_nine.txt').map { |line|  }
+  File.read('inputs/y2019/day_nine.txt').chomp.split(",").map(&:to_i)
 end

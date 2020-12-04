@@ -144,4 +144,8 @@ module Calculator
   def read_buffer
     @input_buffer.shift
   end
+
+  def prompt(msg)
+    print(msg)
+  end
 end
