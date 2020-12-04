@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift './lib'
+
+require 'advent_of_code'
+require 'thor'
+require 'fileutils'
+
+class Cli < Thor
+  desc 'execute DAY PART', 'Run day parts'
+  option :year, type: :numeric, default: Time.now.year
+  def execute(day, part)
+    require "advent_of_code/#{folder}/day_#{day}"
+
+    puts "[*] Day #{day} part #{part} => #{send(part)}"
+  end
+
+  desc 'gen DAY', 'Generates stubs for a new day'
+  option :year, type: :numeric, default: Time.now.year
+  def gen(day)
+    input_file = "inputs/#{folder}/day_#{day}.txt"
+    src_file = "lib/advent_of_code/#{folder}/day_#{day}.rb"
+
+    template = <<-FILE
+def first
+  "first part"
+end
+
+def second
+  "second part"
+end
+
+def input
+  open('#{input_file}').map { |line|  }
+end
+    FILE
+
+    FileUtils.mkdir_p "inputs/#{folder}"
+    FileUtils.mkdir_p "lib/advent_of_code/#{folder}"
+    FileUtils.touch input_file
+    File.write src_file, template
+  end
+
+  no_commands do
+    def folder
+      "y#{options[:year]}"
+    end
+  end
+end
+
+Cli.start ARGV
