@@ -1,11 +1,16 @@
 def first
-  "first part"
+  answer 2
 end
 
 def second
-  "second part"
+  answer 3
 end
 
-def input
-  open('inputs/y2020/day_one.txt').map { |line|  }
+def answer(size)
+  open('inputs/y2020/day_one.txt')
+    .map(&:to_i)
+    .combination(size)
+    .lazy
+    .find { |arr| arr.sum == 2020 }
+    .reduce(&:*)
 end
