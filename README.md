@@ -1,6 +1,6 @@
 # Advent of code
 
-My answers for Advent of code
+My answers for [Advent of code](https://adventofcode.com/) events
 
 ## Usage
 
