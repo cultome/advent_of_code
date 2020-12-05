@@ -31,7 +31,7 @@ def second
 end
 
 def input
-  open('#{input_file}').map { |line|  }
+  open('#{input_file}').map(&:chomp)
 end
     FILE
 
