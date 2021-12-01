@@ -34,7 +34,7 @@ def second
 end
 
 def input
-  open('inputs/y2017/day_fifteen.txt').map(&:chomp).map do |line|
+  open('inputs/y2017/day_eight.txt').map(&:chomp).map do |line|
     reg, op, val, _, arg1, cond, arg2 = line.split(' ')
 
     {
