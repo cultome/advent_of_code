@@ -21,12 +21,14 @@ def second
 
   loop do
     print "#{elves.size}     \r"
+    #puts "[*] #{elves.inspect}"
     break if elves.size == 1
 
     idx_to_delete = (elves.size / 2 + idx) % elves.size
+    #puts " #{elves[idx]} <- #{idx} | #{idx_to_delete} => #{elves[idx_to_delete]}"
     elves.delete_at idx_to_delete
 
-    idx = (idx + 1) % elves.size if idx_to_delete > idx
+    idx = (idx + (idx_to_delete > idx ? 1 : 0)) % elves.size
   end
 
   # 259778 too low
