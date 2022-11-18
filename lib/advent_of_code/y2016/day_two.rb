@@ -24,11 +24,11 @@ def first
 end
 
 def second
-    #1
-  #2 3 4
-#5 6 7 8 9
-  #A B C
-    #D
+  # 1
+  # 2 3 4
+  # 5 6 7 8 9
+  # A B C
+  # D
 
   keypad = {
     '1' => { up: '1', right: '1', down: '3', left: '1' },

@@ -6,7 +6,7 @@ end
 
 def second
   input.select do |words|
-    sorted = words.map{|w| w.split('').sort.join }
+    sorted = words.map { |w| w.split('').sort.join }
 
     words.size == words.uniq.size && sorted.size == sorted.uniq.size
   end.size

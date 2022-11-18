@@ -12,18 +12,18 @@ def first
     new_row = []
 
     row_size.times do |col|
-      left = col-1 >= 0 ? prev_row[col-1] : SAFE
+      left = col - 1 >= 0 ? prev_row[col - 1] : SAFE
       center = prev_row[col]
-      right = col+1 < row_size ? prev_row[col+1] : SAFE
+      right = col + 1 < row_size ? prev_row[col + 1] : SAFE
 
       is_trap =
-        #Its left and center tiles are traps, but its right tile is not.
+        # Its left and center tiles are traps, but its right tile is not.
         (left == TRAP && center == TRAP && right == SAFE) ||
-        #Its center and right tiles are traps, but its left tile is not.
+        # Its center and right tiles are traps, but its left tile is not.
         (left == SAFE && center == TRAP && right == TRAP) ||
-        #Only its left tile is a trap.
+        # Only its left tile is a trap.
         (left == TRAP && center == SAFE && right == SAFE) ||
-        #Only its right tile is a trap.
+        # Only its right tile is a trap.
         (left == SAFE && center == SAFE && right == TRAP)
 
       new_row << (is_trap ? TRAP : SAFE)
@@ -48,18 +48,18 @@ def second
     new_row = []
 
     row_size.times do |col|
-      left = col-1 >= 0 ? prev_row[col-1] : SAFE
+      left = col - 1 >= 0 ? prev_row[col - 1] : SAFE
       center = prev_row[col]
-      right = col+1 < row_size ? prev_row[col+1] : SAFE
+      right = col + 1 < row_size ? prev_row[col + 1] : SAFE
 
       is_trap =
-        #Its left and center tiles are traps, but its right tile is not.
+        # Its left and center tiles are traps, but its right tile is not.
         (left == TRAP && center == TRAP && right == SAFE) ||
-        #Its center and right tiles are traps, but its left tile is not.
+        # Its center and right tiles are traps, but its left tile is not.
         (left == SAFE && center == TRAP && right == TRAP) ||
-        #Only its left tile is a trap.
+        # Only its left tile is a trap.
         (left == TRAP && center == SAFE && right == SAFE) ||
-        #Only its right tile is a trap.
+        # Only its right tile is a trap.
         (left == SAFE && center == SAFE && right == TRAP)
 
       new_row << (is_trap ? TRAP : SAFE)
@@ -74,5 +74,5 @@ def second
 end
 
 def input
-  open('inputs/y2016/day_eighteen.txt').map(&:chomp).flat_map{ |line| line.split('') }
+  open('inputs/y2016/day_eighteen.txt').map(&:chomp).flat_map { |line| line.split('') }
 end

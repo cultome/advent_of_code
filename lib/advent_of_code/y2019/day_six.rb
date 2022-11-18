@@ -34,7 +34,7 @@ def build_tree(lines)
     parent_node.children.push(child_node)
   end
 
-  root = dict.values.find{ |node| node.parent.nil? }
+  root = dict.values.find { |node| node.parent.nil? }
   [root, dict]
 end
 
@@ -50,10 +50,10 @@ def second
   you_hierarchy = hierarchy dict["YOU"]
   san_hierarchy = hierarchy dict["SAN"]
 
-  common_parent = you_hierarchy.reduce(nil) { |acc,parent| san_hierarchy.include?(parent) ? parent : acc }
+  common_parent = you_hierarchy.reduce(nil) { |acc, parent| san_hierarchy.include?(parent) ? parent : acc }
 
-  you_dist = you_hierarchy.drop_while{|h| h != common_parent }.size - 1
-  san_dist = san_hierarchy.drop_while{|h| h != common_parent }.size - 1
+  you_dist = you_hierarchy.drop_while { |h| h != common_parent }.size - 1
+  san_dist = san_hierarchy.drop_while { |h| h != common_parent }.size - 1
 
   you_dist + san_dist
 end

@@ -8,7 +8,7 @@ def first
 
     configs << banks.join(";")
 
-    idx = banks.find_index{|idx| idx == banks.max }
+    idx = banks.find_index { |idx| idx == banks.max }
     share = banks[idx]
     banks[idx] = 0
 
@@ -39,10 +39,9 @@ def second
       return configs.size - idx
     end
 
-
     configs << banks.join(";")
 
-    idx = banks.find_index{|idx| idx == banks.max }
+    idx = banks.find_index { |idx| idx == banks.max }
     share = banks[idx]
     banks[idx] = 0
 

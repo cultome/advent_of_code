@@ -1,11 +1,11 @@
 def first
   input.count do |cmd|
     abba_regular = cmd[:regular].each_with_object([]) do |group, acc|
-      (group.size - 3).times { |idx| acc << group[idx..idx+3] }
+      (group.size - 3).times { |idx| acc << group[idx..idx + 3] }
     end.any? { |group| group =~ /(.)(.)\2\1/ && $1 != $2 }
 
     abba_hyper = cmd[:hyper].each_with_object([]) do |group, acc|
-      (group.size - 3).times { |idx| acc << group[idx..idx+3] }
+      (group.size - 3).times { |idx| acc << group[idx..idx + 3] }
     end.any? { |group| group =~ /(.)(.)\2\1/ && $1 != $2 }
 
     abba_regular && !abba_hyper
@@ -15,11 +15,11 @@ end
 def second
   input.count do |cmd|
     aba_groups = cmd[:regular].each_with_object([]) do |group, acc|
-      (group.size - 2).times { |idx| acc << group[idx..idx+2] }
+      (group.size - 2).times { |idx| acc << group[idx..idx + 2] }
     end.select { |group| group =~ /(.)(.)\1/ && $1 != $2 }
 
     bab_groups = cmd[:hyper].each_with_object([]) do |group, acc|
-      (group.size - 2).times { |idx| acc << group[idx..idx+2] }
+      (group.size - 2).times { |idx| acc << group[idx..idx + 2] }
     end.select { |group| group =~ /(.)(.)\1/ && $1 != $2 }
 
     if !aba_groups.empty? && !bab_groups.empty?
@@ -38,8 +38,8 @@ def input
     line =~ /^(.+?)\[(.+?)\](.+?)$/
 
     groups = line.scan(/(.+?)\[(.+?)\]|(.+?)$/).flatten.compact
-    regular = groups.select.with_index { |grp, idx| idx % 2 == 0}
-    hypers = groups[1..].select.with_index { |grp, idx| idx % 2 == 0}
+    regular = groups.select.with_index { |grp, idx| idx % 2 == 0 }
+    hypers = groups[1..].select.with_index { |grp, idx| idx % 2 == 0 }
 
     { regular: regular, hyper: hypers }
   end

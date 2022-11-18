@@ -1,5 +1,5 @@
 def first
-  race_time = 2_503#secs
+  race_time = 2_503 # secs
 
   input.map do |reno, speed, runtime, rest|
     calculate_distance race_time, speed, runtime, rest
@@ -7,14 +7,14 @@ def first
 end
 
 def second
-  race_time = 2_503#secs
+  race_time = 2_503 # secs
   data = input
-  distance_renos = Hash.new { |h,k| h[k] = 0 }
-  renos_points = Hash.new { |h,k| h[k] = 0 }
+  distance_renos = Hash.new { |h, k| h[k] = 0 }
+  renos_points = Hash.new { |h, k| h[k] = 0 }
 
   race_time.times do |race_time|
     input.map do |reno, speed, runtime, rest|
-      distance_renos[reno] = calculate_distance race_time+1, speed, runtime, rest
+      distance_renos[reno] = calculate_distance race_time + 1, speed, runtime, rest
     end
 
     max_current_distance = distance_renos.values.max

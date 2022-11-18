@@ -1,5 +1,5 @@
 def first
-  input.each_with_object(Hash.new{|h,k| h[k] = []}) do |vals, acc|
+  input.each_with_object(Hash.new { |h, k| h[k] = [] }) do |vals, acc|
     vals.each_with_index do |letter, idx|
       acc[idx] << letter
     end
@@ -11,7 +11,7 @@ def first
 end
 
 def second
-  input.each_with_object(Hash.new{|h,k| h[k] = []}) do |vals, acc|
+  input.each_with_object(Hash.new { |h, k| h[k] = [] }) do |vals, acc|
     vals.each_with_index do |letter, idx|
       acc[idx] << letter
     end

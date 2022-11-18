@@ -11,7 +11,7 @@ def second
 end
 
 def process(value)
-  segments = value.split('').slice_when { |a,b| a != b }.map(&:join)
+  segments = value.split('').slice_when { |a, b| a != b }.map(&:join)
   value = segments.map do |seg|
     "#{seg.size}#{seg[0]}"
   end.join()

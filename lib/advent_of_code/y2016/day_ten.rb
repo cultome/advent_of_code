@@ -57,7 +57,7 @@ def second
     end
   end
 
-  state[:output].values_at(0,1,2).flatten.reduce(&:*)
+  state[:output].values_at(0, 1, 2).flatten.reduce(&:*)
 end
 
 def input

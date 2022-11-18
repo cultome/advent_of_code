@@ -3,13 +3,13 @@ def first
 
   board = run_wire(wire1) { |point, step| step }
 
-  intersections = run_wire(wire2 ) do |point, _|
+  intersections = run_wire(wire2) do |point, _|
     next unless board.key? point
 
     point.split(",").map(&:to_i).map(&:abs).sum
   end
 
-  _, min_steps = intersections.min { |(_,v1), (_,v2)| v1 <=> v2 }
+  _, min_steps = intersections.min { |(_, v1), (_, v2)| v1 <=> v2 }
 
   min_steps
 end
@@ -19,11 +19,10 @@ def second
 
   board = run_wire(wire1) { |point, step| step }
 
-  steps = run_wire(wire2 ) { |point, step| (board[point] + step) if board.key? point }
+  steps = run_wire(wire2) { |point, step| (board[point] + step) if board.key? point }
 
   steps.values.min
 end
-
 
 def run_wire(wire)
   acc = {}

@@ -35,20 +35,20 @@ def second
 end
 
 def generate_proportions(perm_size)
-  (0..100)
-    .to_a
-    .permutation(perm_size)
-    .select{ |arr| arr.sum == 100 }
+  (0..100).
+    to_a.
+    permutation(perm_size).
+    select { |arr| arr.sum == 100 }
 end
 
 def input
-  open('inputs/y2015/day_fifthteen.txt').map(&:chomp).each_with_object(Hash.new{|h,k| h[k] = {}}) do |line, acc|
+  open('inputs/y2015/day_fifthteen.txt').map(&:chomp).each_with_object(Hash.new { |h, k| h[k] = {} }) do |line, acc|
     name = line.split(':').first
-    line
-      .split(': ')
-      .last
-      .split(', ')
-      .map { |ing| ing.split(' ') }
-      .map { |ing, prop| acc[name][ing] = prop.to_i }
+    line.
+      split(': ').
+      last.
+      split(', ').
+      map { |ing| ing.split(' ') }.
+      map { |ing, prop| acc[name][ing] = prop.to_i }
   end
 end

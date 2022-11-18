@@ -17,7 +17,7 @@ def find_next(value)
     puts("[*] #{value} -> #{count}...") if count % 10_000_000 == 0
 
     # rule 2
-    next if value.include?('i') || value.include?('l')|| value.include?('o')
+    next if value.include?('i') || value.include?('l') || value.include?('o')
 
     # rule 1
     next unless value =~ /(abc|bcd|cde|def|efg|fgh|ghj|hjk|jkm|kmn|mnp|npq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz)/

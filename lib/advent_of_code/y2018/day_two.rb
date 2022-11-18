@@ -1,10 +1,10 @@
 require 'text'
 
 def first
-  sizes = input
-    .map { |line| line.split('').group_by { |chr| chr } }
-    .map(&:values)
-    .map { |grp| grp.map(&:size) }
+  sizes = input.
+    map { |line| line.split('').group_by { |chr| chr } }.
+    map(&:values).
+    map { |grp| grp.map(&:size) }
 
   group_of_two = sizes.select { |grp| grp.include? 2 }.size
   group_of_three = sizes.select { |grp| grp.include? 3 }.size

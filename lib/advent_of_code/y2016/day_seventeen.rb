@@ -2,19 +2,19 @@ require 'digest'
 
 def first
   @passcode = 'dmypynyp'
-  results = walk genmd5(''), '', [0,0]
+  results = walk genmd5(''), '', [0, 0]
   min = results.map(&:size).min
   results.find { |path| path.size == min }
 end
 
 def second
   @passcode = 'dmypynyp'
-  results = walk genmd5(''), '', [0,0]
+  results = walk genmd5(''), '', [0, 0]
   results.map(&:size).max
 end
 
 def walk(md5, path, pos)
-  return [path] if pos == [3,3]
+  return [path] if pos == [3, 3]
 
   results = []
   open_door = %w[b c d e f]

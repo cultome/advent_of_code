@@ -25,9 +25,9 @@ def second
   grid.flatten.count { |c| c == '#' }
 end
 
-def next_state(grid, size, version=1)
+def next_state(grid, size, version = 1)
   new_grid = clean_grid size
-  keep_on_cond = [2,3]
+  keep_on_cond = [2, 3]
   always_on = [
     "1,1",
     "1,#{size}",
@@ -38,14 +38,14 @@ def next_state(grid, size, version=1)
   1.upto(size).each do |y|
     1.upto(size).each do |x|
       on_count = [
-        grid[y+1][x-1],
-        grid[y+1][x],
-        grid[y+1][x+1],
-        grid[y-1][x-1],
-        grid[y-1][x],
-        grid[y-1][x+1],
-        grid[y][x+1],
-        grid[y][x-1],
+        grid[y + 1][x - 1],
+        grid[y + 1][x],
+        grid[y + 1][x + 1],
+        grid[y - 1][x - 1],
+        grid[y - 1][x],
+        grid[y - 1][x + 1],
+        grid[y][x + 1],
+        grid[y][x - 1],
       ].count { |cell| cell == '#' }
 
       if version == 2 && always_on.include?("#{y},#{x}")

@@ -19,25 +19,25 @@ def run_program(a = 0)
 
     case inst[:cmd]
     when :hlf
-      #hlf r sets register r to half its current value, then continues with the next instruction.
+      # hlf r sets register r to half its current value, then continues with the next instruction.
       new_val = instance_variable_get("@#{inst[:op1]}") / 2
       instance_variable_set("@#{inst[:op1]}", new_val)
       ptr += 1
     when :tpl
-      #tpl r sets register r to triple its current value, then continues with the next instruction.
+      # tpl r sets register r to triple its current value, then continues with the next instruction.
       new_val = instance_variable_get("@#{inst[:op1]}") * 3
       instance_variable_set("@#{inst[:op1]}", new_val)
       ptr += 1
     when :inc
-      #inc r increments register r, adding 1 to it, then continues with the next instruction.
+      # inc r increments register r, adding 1 to it, then continues with the next instruction.
       new_val = instance_variable_get("@#{inst[:op1]}") + 1
       instance_variable_set("@#{inst[:op1]}", new_val)
       ptr += 1
     when :jmp
-      #jmp offset is a jump; it continues with the instruction offset away relative to itself.
+      # jmp offset is a jump; it continues with the instruction offset away relative to itself.
       ptr += inst[:op1].to_i
     when :jie
-      #jie r, offset is like jmp, but only jumps if register r is even ("jump if even").
+      # jie r, offset is like jmp, but only jumps if register r is even ("jump if even").
       val = instance_variable_get("@#{inst[:op1]}")
 
       if val.even?
@@ -46,7 +46,7 @@ def run_program(a = 0)
         ptr += 1
       end
     when :jio
-      #jio r, offset is like jmp, but only jumps if register r is 1 ("jump if one", not odd).
+      # jio r, offset is like jmp, but only jumps if register r is 1 ("jump if one", not odd).
       val = instance_variable_get("@#{inst[:op1]}")
 
       if val == 1

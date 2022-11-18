@@ -11,10 +11,10 @@ def second
 end
 
 def input
-  open('inputs/y2020/day_two.txt')
-    .map(&:chomp)
-    .map { |l| l.split(': ') }
-    .map do |policy, passwd|
+  open('inputs/y2020/day_two.txt').
+    map(&:chomp).
+    map { |l| l.split(': ') }.
+    map do |policy, passwd|
       rg, chr = policy.split(' ')
       low, high = rg.split('-').map(&:to_i)
 

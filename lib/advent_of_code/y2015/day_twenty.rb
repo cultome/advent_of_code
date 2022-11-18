@@ -32,14 +32,14 @@ end
 
 def divisors(num)
   arr = Prime.
-    prime_division(num)
-    .map { |v,exp| (0..exp).map { |i| v**i } }
+    prime_division(num).
+    map { |v, exp| (0..exp).map { |i| v**i } }
 
-  arr.first
-    .product(*arr[1..-1])
-    .map { |a| a.reduce(:*) }
-    .map { |m| [m, num/m] }
-    .flatten
-    .uniq
-    .sort
+  arr.first.
+    product(*arr[1..-1]).
+    map { |a| a.reduce(:*) }.
+    map { |m| [m, num / m] }.
+    flatten.
+    uniq.
+    sort
 end

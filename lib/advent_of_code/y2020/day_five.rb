@@ -16,9 +16,9 @@ def walk_tree(way, initial_range, low_sign, up_sign)
 
     case rc
     when up_sign
-      range = (range.first+cut..range.last)
+      range = (range.first + cut..range.last)
     when low_sign
-      range = (range.first..range.last-cut)
+      range = (range.first..range.last - cut)
     end
   end
 
@@ -35,5 +35,5 @@ def ids
 end
 
 def input
-  open('inputs/y2020/day_five.txt').map(&:chomp).map{ |line| line.split('') }
+  open('inputs/y2020/day_five.txt').map(&:chomp).map { |line| line.split('') }
 end

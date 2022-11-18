@@ -1,7 +1,7 @@
 def first
   res = results
   scores = input.each_with_object({}) do |(name, props), acc|
-    acc[name] = props.count { |k,v| res[k] == props[k] }
+    acc[name] = props.count { |k, v| res[k] == props[k] }
   end
 
   max = scores.values.max
@@ -13,7 +13,7 @@ def second
   gt = %w[cats trees]
   lt = %w[pomeranians goldfish]
   scores = input.each_with_object({}) do |(name, props), acc|
-    acc[name] = props.count do |k,v|
+    acc[name] = props.count do |k, v|
       if gt.include? k
         reference[k] < props[k]
       elsif lt.include? k
@@ -44,14 +44,14 @@ def results
 end
 
 def input
-  open('inputs/y2015/day_sixteen.txt').map(&:chomp).each_with_object(Hash.new{|h,k| h[k] = {}}) do |line, acc|
+  open('inputs/y2015/day_sixteen.txt').map(&:chomp).each_with_object(Hash.new { |h, k| h[k] = {} }) do |line, acc|
     name = line.split(': ').first.split(' ').last.to_i
 
-    line
-      .split(/Sue ([\d]+): (.*)/)
-      .last
-      .split(', ')
-      .map { |p| p.split(': ') }
-      .each { |k,v| acc[name][k] = v.to_i }
+    line.
+      split(/Sue ([\d]+): (.*)/).
+      last.
+      split(', ').
+      map { |p| p.split(': ') }.
+      each { |k, v| acc[name][k] = v.to_i }
   end
 end

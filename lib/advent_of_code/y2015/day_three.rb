@@ -30,13 +30,13 @@ def second
   input.each_with_object(res) do |step, acc|
     case step
     when '^'
-      is_robo ? yr +=1 : y += 1
+      is_robo ? yr += 1 : y += 1
     when '>'
-      is_robo ? xr +=1 : x += 1
+      is_robo ? xr += 1 : x += 1
     when 'v'
-      is_robo ? yr -=1 : y -= 1
+      is_robo ? yr -= 1 : y -= 1
     when '<'
-      is_robo ? xr -=1 : x -= 1
+      is_robo ? xr -= 1 : x -= 1
     end
 
     if is_robo

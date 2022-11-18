@@ -4,7 +4,7 @@ def first
     next if line =~ /(ab|cd|pq|xy)/
 
     letters = line.split('')
-    next if letters.find.with_index { |chr, idx| chr == letters[idx+1] }.nil?
+    next if letters.find.with_index { |chr, idx| chr == letters[idx + 1] }.nil?
 
     true
   end

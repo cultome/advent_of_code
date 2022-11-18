@@ -1,13 +1,13 @@
 def first
   input.sum do |line|
     chars_count = line.split('').size
-    memory_count = line
-      .gsub(/^"/, '')
-      .gsub(/"$/, '')
-      .gsub('\\\\', '-')
-      .gsub('\\"', '-')
-      .gsub(/\\x[a-f0-9]{2}/, '-')
-      .size
+    memory_count = line.
+      gsub(/^"/, '').
+      gsub(/"$/, '').
+      gsub('\\\\', '-').
+      gsub('\\"', '-').
+      gsub(/\\x[a-f0-9]{2}/, '-').
+      size
 
     chars_count - memory_count
   end

@@ -22,10 +22,10 @@ def walk(node, records)
   end
 
   groups = branches.group_by { |n| n }
-  wrong_value = groups.find { |k,v| v.size == 1 }
+  wrong_value = groups.find { |k, v| v.size == 1 }
 
   unless wrong_value.nil?
-    right_value = groups.keys.find{|v| v != wrong_value.first }
+    right_value = groups.keys.find { |v| v != wrong_value.first }
     offset = wrong_value.first - right_value
 
     child_idx = branches.find_index { |v| v == wrong_value.first }

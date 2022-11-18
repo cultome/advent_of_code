@@ -7,10 +7,10 @@ def second
 end
 
 def answer(size)
-  open('inputs/y2020/day_one.txt')
-    .map(&:to_i)
-    .combination(size)
-    .lazy
-    .find { |arr| arr.sum == 2020 }
-    .reduce(&:*)
+  open('inputs/y2020/day_one.txt').
+    map(&:to_i).
+    combination(size).
+    lazy.
+    find { |arr| arr.sum == 2020 }.
+    reduce(&:*)
 end

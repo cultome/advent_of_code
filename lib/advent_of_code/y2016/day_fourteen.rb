@@ -23,7 +23,7 @@ def first
         extra_nested += 1
 
         if md5_2 =~ quintuple
-          keys << extra-1
+          keys << extra - 1
           break
         end
       end

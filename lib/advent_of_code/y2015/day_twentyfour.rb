@@ -11,13 +11,13 @@ end
 def calculate(group_size)
   nums = input
 
-  groups = generate_groups nums.clone, nums.sum/group_size, []
+  groups = generate_groups nums.clone, nums.sum / group_size, []
 
   min = groups.map(&:count).min
-  groups
-    .select { |g| g.count == min }
-    .map{|g| g.reduce(&:*) }
-    .min
+  groups.
+    select { |g| g.count == min }.
+    map { |g| g.reduce(&:*) }.
+    min
 end
 
 def generate_groups(nums, goal, actual)

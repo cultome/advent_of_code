@@ -1,5 +1,5 @@
 def first
-  rx = Hash.new { |h,k| h[k] = 0 }
+  rx = Hash.new { |h, k| h[k] = 0 }
 
   input.each do |i|
     if rx[i[:arg1]].send(i[:cond], i[:arg2])
@@ -15,7 +15,7 @@ def first
 end
 
 def second
-  rx = Hash.new { |h,k| h[k] = 0 }
+  rx = Hash.new { |h, k| h[k] = 0 }
   max = -1
 
   input.each do |i|

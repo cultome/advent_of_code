@@ -7,7 +7,7 @@ def second
   floor = 0
 
   input.each_with_index do |chr, idx|
-    floor += (chr == "(" ? 1 : -1)
+    floor += (chr == '(' ? 1 : -1)
 
     return idx + 1 if floor == -1
   end

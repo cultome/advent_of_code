@@ -14,10 +14,10 @@ def second
         value.to_i >= 2020 && value.to_i <= 2030
       when 'hgt' # (Height) - a number followed by either cm or in:
         if value.end_with? 'cm'
-          #If cm, the number must be at least 150 and at most 193.
+          # If cm, the number must be at least 150 and at most 193.
           value.gsub('cm', '').to_i >= 150 && value.gsub('cm', '').to_i <= 193
         elsif value.end_with? 'in'
-          #If in, the number must be at least 59 and at most 76.
+          # If in, the number must be at least 59 and at most 76.
           value.gsub('in', '').to_i >= 59 && value.gsub('in', '').to_i <= 76
         else
           false
@@ -44,10 +44,10 @@ def valid_records
 end
 
 def input
-  File.read('inputs/y2020/day_four.txt')
-    .split("\n\n")
-    .map{ |line| line.split(/[\n ]/) }
-    .each_with_object([]) do |arr, res|
+  File.read('inputs/y2020/day_four.txt').
+    split("\n\n").
+    map { |line| line.split(/[\n ]/) }.
+    each_with_object([]) do |arr, res|
       res << arr.each_with_object({})do |field, acc|
         k, v = field.split(':')
         acc[k] = v

@@ -1,34 +1,34 @@
 def first
-  #The fourth floor contains nothing relevant.
-  #The third floor contains a thulium-compatible microchip.
-  #The second floor contains a thulium generator, a ruthenium generator, a ruthenium-compatible microchip, a curium generator, and a curium-compatible microchip.
-  #The first floor contains a strontium generator, a strontium-compatible microchip, a plutonium generator, and a plutonium-compatible microchip.
+  # The fourth floor contains nothing relevant.
+  # The third floor contains a thulium-compatible microchip.
+  # The second floor contains a thulium generator, a ruthenium generator, a ruthenium-compatible microchip, a curium generator, and a curium-compatible microchip.
+  # The first floor contains a strontium generator, a strontium-compatible microchip, a plutonium generator, and a plutonium-compatible microchip.
 
-  #floors = [
-    #[                            ],
-    #['1M'                        ],
-    #['1G', '2G', '2M', '3G', '3M'],
-    #['4G', '4M', '5G', '5M'      ],
-  #].reverse
+  # floors = [
+  # [                            ],
+  # ['1M'                        ],
+  # ['1G', '2G', '2M', '3G', '3M'],
+  # ['4G', '4M', '5G', '5M'      ],
+  # ].reverse
 
-  #The fourth floor contains nothing relevant.
-  #The third floor contains a lithium generator.
-  #The second floor contains a hydrogen generator.
-  #The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.
+  # The fourth floor contains nothing relevant.
+  # The third floor contains a lithium generator.
+  # The second floor contains a hydrogen generator.
+  # The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.
   floors = [
-    [          ],
-    ['LG'      ],
-    ['HG'      ],
+    [],
+    ['LG'],
+    ['HG'],
     ['HM', 'LM'],
   ].reverse
 
   curr_floor = 0
 
   loop do
-    moves = generate_moves curr_floor, floors, curr_floor+1
+    moves = generate_moves curr_floor, floors, curr_floor + 1
     moves.first.each do |x|
       floors[curr_floor].delete x
-      floors[curr_floor+1] << x
+      floors[curr_floor + 1] << x
     end
     curr_floor += 1
   end

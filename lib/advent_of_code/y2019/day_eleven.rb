@@ -23,19 +23,19 @@ def second
   checksum.join
 end
 
-def robot_walk(program, initial_color=0)
+def robot_walk(program, initial_color = 0)
   black = 0
   move_left = 0
-  #move_right = 1
+  # move_right = 1
   face_up = 0
-  face_left= 1
+  face_left = 1
   face_down = 2
   face_right = 3
 
-  grid = Hash.new { |h,k| h[k] = Hash.new { |h2, k2| h2[k2] = black }}
+  grid = Hash.new { |h, k| h[k] = Hash.new { |h2, k2| h2[k2] = black } }
   x, y, facing = 0, 0, 0
 
-  state = {version: 3, read_from: :read_buffer}
+  state = { version: 3, read_from: :read_buffer }
   @relative_base = 0
   @input_buffer = [initial_color]
   tiles = Set.new
@@ -54,13 +54,13 @@ def robot_walk(program, initial_color=0)
 
     case facing
     when face_up
-      x, y, facing = move == move_left ? [x-1, y, face_left] : [x+1, y, face_right]
+      x, y, facing = move == move_left ? [x - 1, y, face_left] : [x + 1, y, face_right]
     when face_left
-      x, y, facing = move == move_left ? [x, y-1, face_down] : [x, y+1, face_up]
+      x, y, facing = move == move_left ? [x, y - 1, face_down] : [x, y + 1, face_up]
     when face_down
-      x, y, facing = move == move_left ? [x+1, y, face_right] : [x-1, y, face_left]
+      x, y, facing = move == move_left ? [x + 1, y, face_right] : [x - 1, y, face_left]
     when face_right
-      x, y, facing = move == move_left ? [x, y+1, face_up] : [x, y-1, face_down]
+      x, y, facing = move == move_left ? [x, y + 1, face_up] : [x, y - 1, face_down]
     end
 
     @input_buffer.push grid[y][x]
@@ -80,7 +80,7 @@ def print_message(grid, hmax, hmin, wmax, wmin)
       checksum << grid.fetch(y, {}).fetch(x, black)
       row << (grid.fetch(y, {}).fetch(x, black) == white ? "#" : " ")
     end
-    #logger.info "#{row.join}"
+    # logger.info "#{row.join}"
   end
 
   checksum

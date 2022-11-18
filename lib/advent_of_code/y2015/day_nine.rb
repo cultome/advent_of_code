@@ -13,7 +13,7 @@ def input
 end
 
 def calculate_route_weights
-  graph = input.each_with_object(Hash.new{|h,k| h[k] = Node.new }) do |line, acc|
+  graph = input.each_with_object(Hash.new { |h, k| h[k] = Node.new }) do |line, acc|
     line =~ /^(.+?) to (.+?) = ([\d]+)$/
 
     acc[$1].name = $1
@@ -29,7 +29,7 @@ def calculate_route_weights
     walk graph[start], [start], graph
   end
 
-  route_weights = Hash.new { |h,k| h[k] = 0 }
+  route_weights = Hash.new { |h, k| h[k] = 0 }
   all_routes.each do |route|
     route_id = route.join(' -> ')
     current = nil
@@ -75,6 +75,6 @@ class Node
   end
 
   def inspect
-    "[#{name}] -> [#{connection.map{|k,_| k}.join(',')}]"
+    "[#{name}] -> [#{connection.map { |k, _| k }.join(',')}]"
   end
 end

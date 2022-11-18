@@ -14,7 +14,7 @@ def decompres_v2(line)
     chars, repetitions = $1[1..-2].split('x').map(&:to_i)
 
     result += line[0...idx].size
-    content = line[idx+marker_size, chars]
+    content = line[idx + marker_size, chars]
 
     if content.index /(\([\d]+x[\d]+\))/
       content_size = decompres_v2 content
@@ -38,7 +38,7 @@ def decompres(line)
     chars, repetitions = $1[1..-2].split('x').map(&:to_i)
 
     result << line[0...idx]
-    content = line[idx+marker_size, chars]
+    content = line[idx + marker_size, chars]
 
     repetitions.times do
       result << content

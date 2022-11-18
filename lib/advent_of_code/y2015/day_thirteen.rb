@@ -27,12 +27,12 @@ def second
 end
 
 def check_sitting(data)
-  invites = data.flat_map { |key,_| key.split('-') }.uniq
+  invites = data.flat_map { |key, _| key.split('-') }.uniq
 
   invites.permutation.map do |invs|
     sum = 0
 
-    0.upto(invites.size-1) do |idx|
+    0.upto(invites.size - 1) do |idx|
       prev_idx = idx - 1 >= 0 ? idx - 1 : invites.size - 1
       next_idx = idx + 1 < invites.size ? idx + 1 : 0
 

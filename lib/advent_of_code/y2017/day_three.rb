@@ -9,14 +9,14 @@ def second
 
   x, y = spiral do |num, x, y|
     mem["(#{x},#{y})"] =
-      mem.fetch("(#{x-1},#{y-1})", 0) +
-      mem.fetch("(#{x},#{y-1})", 0) +
-      mem.fetch("(#{x+1},#{y-1})", 0) +
-      mem.fetch("(#{x-1},#{y})", 0) +
-      mem.fetch("(#{x+1},#{y})", 0) +
-      mem.fetch("(#{x-1},#{y+1})", 0) +
-      mem.fetch("(#{x},#{y+1})", 0) +
-      mem.fetch("(#{x+1},#{y+1})", 0)
+      mem.fetch("(#{x - 1},#{y - 1})", 0) +
+      mem.fetch("(#{x},#{y - 1})", 0) +
+      mem.fetch("(#{x + 1},#{y - 1})", 0) +
+      mem.fetch("(#{x - 1},#{y})", 0) +
+      mem.fetch("(#{x + 1},#{y})", 0) +
+      mem.fetch("(#{x - 1},#{y + 1})", 0) +
+      mem.fetch("(#{x},#{y + 1})", 0) +
+      mem.fetch("(#{x + 1},#{y + 1})", 0)
 
     mem["(#{x},#{y})"] >= 347991
   end

@@ -7,7 +7,7 @@ end
 def calculate(n)
   current = 20151125
 
-  (n-1).times do
+  (n - 1).times do
     current = current * 252533 % 33554393
   end
 
@@ -22,7 +22,7 @@ end
 def find_value_of_col(req_col, rowid, row_first_value)
   col_value = row_first_value
 
-  (req_col-1).times do |colid|
+  (req_col - 1).times do |colid|
     col_value += colid + rowid + 1
   end
 

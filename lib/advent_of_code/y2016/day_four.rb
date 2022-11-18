@@ -15,10 +15,10 @@ end
 
 def clean_rooms
   input.select do |cmd|
-    grouped = cmd[:content]
-      .split('')
-      .group_by { |char| char }
-      .transform_values(&:size)
+    grouped = cmd[:content].
+      split('').
+      group_by { |char| char }.
+      transform_values(&:size)
 
     check = grouped.values.uniq.sort.reverse.first(5).each_with_object([]) do |ref, acc|
       acc.concat(grouped.select { |_, v| v == ref }.flat_map(&:first).sort)

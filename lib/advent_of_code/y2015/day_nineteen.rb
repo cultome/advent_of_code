@@ -41,7 +41,7 @@ def second
 end
 
 def prepare_replacements(data, reverse = false)
-  data.each_with_object(Hash.new { |h,k| h[k] = [] }) do |prop, acc|
+  data.each_with_object(Hash.new { |h, k| h[k] = [] }) do |prop, acc|
     name, value = prop.split(' => ')
 
     if reverse

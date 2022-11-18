@@ -3,7 +3,7 @@ def first
 end
 
 def second
-  given_steps = Set.new(["0,0"])
+  given_steps = Set.new(['0,0'])
   x, y = 0, 0
 
   steps.each do |stp|

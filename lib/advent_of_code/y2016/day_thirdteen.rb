@@ -34,14 +34,14 @@ class Node
   end
 
   def init_children!
-    @up = @@nodes["#{x},#{y-1}"] ||= Node.new(x, y-1, self) if @up.nil?
-    @right = @@nodes["#{x+1},#{y}"] ||= Node.new(x+1, y, self) if @right.nil?
-    @down = @@nodes["#{x},#{y+1}"] ||= Node.new(x, y+1, self) if @down.nil?
-    @left = @@nodes["#{x-1},#{y}"] ||= Node.new(x-1, y, self) if @left.nil?
+    @up = @@nodes["#{x},#{y - 1}"] ||= Node.new(x, y - 1, self) if @up.nil?
+    @right = @@nodes["#{x + 1},#{y}"] ||= Node.new(x + 1, y, self) if @right.nil?
+    @down = @@nodes["#{x},#{y + 1}"] ||= Node.new(x, y + 1, self) if @down.nil?
+    @left = @@nodes["#{x - 1},#{y}"] ||= Node.new(x - 1, y, self) if @left.nil?
   end
 
   def wall?
-    !((x*x + 3*x + 2*x*y + y + y*y) + INPUT).to_s(2).split('').count { |digit| digit == '1' }.even?
+    !((x * x + 3 * x + 2 * x * y + y + y * y) + INPUT).to_s(2).split('').count { |digit| digit == '1' }.even?
   end
 
   def to_s
@@ -61,10 +61,10 @@ class Node
   def route
     if parent.nil?
       nil
-      #"START"
+      # "START"
     else
       [*parent.route, self]
-      #"#{parent.route} -> #{inspect}"
+      # "#{parent.route} -> #{inspect}"
     end
   end
 end
