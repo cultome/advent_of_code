@@ -7,12 +7,17 @@ require 'thor'
 require 'fileutils'
 
 class Cli < Thor
-  desc 'execute DAY PART', 'Run day parts'
+  desc 'execute DAY', 'Run day parts'
   option :year, type: :numeric, default: Time.now.year
-  def execute(day, part)
+  def execute(day, part = 'both')
     require "advent_of_code/#{folder}/day_#{day}"
 
-    puts "[*] Day #{day} part #{part} => #{send(part)}"
+    if part == 'both'
+      puts "[*] Day #{day} first part => #{first}"
+      puts "[*] Day #{day} second part => #{second}"
+    else
+      puts "[*] Day #{day} #{part} part => #{send(part)}"
+    end
   end
 
   desc 'gen DAY', 'Generates stubs for a new day'

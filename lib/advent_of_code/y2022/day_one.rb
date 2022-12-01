@@ -1,26 +1,19 @@
 def first
-  group_by_elf
-    .sort_by { |k,v| v }
-    .reverse
-    .first
-    .last
+  group_by_elf.max
 end
 
 def second
-  group_by_elf
-    .sort_by { |k,v| v }
-    .reverse[0...3]
-    .map(&:last)
-    .sum
+  group_by_elf.sort.reverse[0...3].sum
 end
 
 def group_by_elf
-  elf_idx = 1
+  elf_idx = 0
 
-  input.each_with_object(Hash.new { |h,k| h[k] = 0 }) do |cals, acc|
+  input.each_with_object([]) do |cals, acc|
     if cals.empty?
       elf_idx += 1
     else
+      acc[elf_idx] ||= 0
       acc[elf_idx] += cals.to_i
     end
   end

@@ -12,7 +12,8 @@ $ ./exe/cli gen one --year=2015
 
 # Execute exercises
 
-# ./exe/cli execute <day> <part> --year=<year, default to current>
+# ./exe/cli execute <day> [part] --year=<year, default to current>
+$ ./exe/cli execute one --year=2015
 $ ./exe/cli execute one first --year=2015
 ```
 
