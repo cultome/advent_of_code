@@ -1,32 +1,48 @@
+POINTS_WIN = 6
+POINTS_DRAW = 3
+POINTS_LOSE = 0
+
+POINTS_ROCK = 1
+POINTS_PAPER = 2
+POINTS_SCISSOR = 3
+
+ROCK_OP = 'A'
+PAPER_OP = 'B'
+SCISSOR_OP = 'C'
+
+LOSE_ME = ROCK_ME = 'X'
+DRAW_ME = PAPER_ME = 'Y'
+WIN_ME = SCISSOR_ME = 'Z'
+
 def first
   input.map do |op, you|
     case op
-    when 'A' # Rock
+    when ROCK_OP # Rock
       case you
-      when 'X' # Rock
-        1 + 3
-      when 'Y' # Paper
-        2 + 6
-      when 'Z' # Scissor
-        3 + 0
+      when ROCK_ME # Rock
+        POINTS_ROCK + POINTS_DRAW
+      when PAPER_ME # Paper
+        POINTS_PAPER + POINTS_WIN
+      when SCISSOR_ME # Scissor
+        POINTS_SCISSOR + POINTS_LOSE
       end
-    when 'B' # Paper
+    when  PAPER_OP # Paper
       case you
-      when 'X' # Rock
-        1 + 0
-      when 'Y' # Paper
-        2 + 3
-      when 'Z' # Scissor
-        3 + 6
+      when ROCK_ME # Rock
+        POINTS_ROCK + POINTS_LOSE
+      when PAPER_ME # Paper
+        POINTS_PAPER + POINTS_DRAW
+      when SCISSOR_ME # Scissor
+        POINTS_SCISSOR + POINTS_WIN
       end
-    when 'C' # Scissor
+    when  SCISSOR_OP # Scissor
       case you
-      when 'X' # Rock
-        1 + 6
-      when 'Y' # Paper
-        2 + 0
-      when 'Z' # Scissor
-        3 + 3
+      when ROCK_ME # Rock
+        POINTS_ROCK + POINTS_WIN
+      when PAPER_ME # Paper
+        POINTS_PAPER + POINTS_LOSE
+      when SCISSOR_ME # Scissor
+        POINTS_SCISSOR + POINTS_DRAW
       end
     end
   end.sum
@@ -35,32 +51,32 @@ end
 def second
   input.map do |op, you|
     case op
-    when 'A' # Rock
+    when ROCK_OP # Rock
       case you
-      when 'X' # Lose
-        3 + 0 # Need Scissor
-      when 'Y' # Draw
-        1 + 3 # Need Rock
-      when 'Z' # Win
-        2 + 6 # Need Paper
+      when LOSE_ME # Lose
+        POINTS_SCISSOR + POINTS_LOSE # Need Scissor
+      when DRAW_ME # Draw
+        POINTS_ROCK + POINTS_DRAW # Need Rock
+      when WIN_ME # Win
+        POINTS_PAPER + POINTS_WIN # Need Paper
       end
-    when 'B' # Paper
+    when  PAPER_OP # Paper
       case you
-      when 'X' # Lose
-        1 + 0
-      when 'Y' # Draw
-        2 + 3
-      when 'Z' # Win
-        3 + 6
+      when LOSE_ME # Lose
+        POINTS_ROCK + POINTS_LOSE
+      when DRAW_ME # Draw
+        POINTS_PAPER + POINTS_DRAW
+      when WIN_ME # Win
+        POINTS_SCISSOR + POINTS_WIN
       end
-    when 'C' # Scissor
+    when  SCISSOR_OP # Scissor
       case you
-      when 'X' # Lose
-        2 + 0
-      when 'Y' # Draw
-        3 + 3
-      when 'Z' # Win
-        1 + 6
+      when LOSE_ME # Lose
+        POINTS_PAPER + POINTS_LOSE
+      when DRAW_ME # Draw
+        POINTS_SCISSOR + POINTS_DRAW
+      when WIN_ME # Win
+        POINTS_ROCK + POINTS_WIN
       end
     end
   end.sum
