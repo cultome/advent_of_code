@@ -7,14 +7,14 @@ My answers for [Advent of code](https://adventofcode.com/) events
 ```bash
 # Generate stubs for exercises
 
-# ./exe/cli gen <day> --year=<year, default to current>
-$ ./exe/cli gen one --year=2015
+# ./exe/aoc gen <day> --year=<year, default to current>
+$ ./exe/aoc gen one --year=2015
 
 # Execute exercises
 
-# ./exe/cli execute <day> [part] --year=<year, default to current>
-$ ./exe/cli execute one --year=2015
-$ ./exe/cli execute one first --year=2015
+# ./exe/aoc execute <day> [part] --year=<year, default to current>
+$ ./exe/aoc execute one --year=2015
+$ ./exe/aoc execute one first --year=2015
 ```
 
 ## License

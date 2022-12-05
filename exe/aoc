@@ -7,6 +7,13 @@ require 'thor'
 require 'fileutils'
 
 class Cli < Thor
+  DAYS = %w[
+    one two three four five six seven eight nine ten
+    eleven twelve thirteen fourteen fifteen sixteen
+    seventeen eighteen nineteen twenty twentyone
+    twentytwo twentythree twentyfour twentyfive
+  ]
+
   desc 'execute DAY', 'Run day parts'
   option :year, type: :numeric, default: Time.now.year
   def execute(day, part = 'both')
@@ -44,6 +51,31 @@ end
     FileUtils.mkdir_p "lib/advent_of_code/#{folder}"
     FileUtils.touch input_file
     File.write src_file, template
+  end
+
+  desc 'which', 'Check with exercirses are made'
+  option :missing, type: :boolean, default: false
+  def which
+    Dir
+      .children('lib/advent_of_code')
+      .select { |dir| dir.start_with? 'y20' }
+      .map { |dir| dir.gsub('y', '').to_i }
+      .sort
+      .each do |year|
+        puts "Year #{year}"
+
+        days = Dir
+          .children("lib/advent_of_code/y#{year}")
+          .select { |file| file.start_with? 'day_' }
+          .map { |file| file.gsub('day_', '').gsub('.rb', '') }
+          .sort { |a, b| DAYS.index(a) <=> DAYS.index(b) }
+
+        days_to_show = options[:missing] ? (DAYS - days) : (DAYS & days)
+
+        days_to_show.each do |file|
+          puts " - #{file.gsub('day_', '').gsub('.rb', '')}"
+        end
+      end
   end
 
   no_commands do
