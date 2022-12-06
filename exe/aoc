@@ -14,9 +14,9 @@ class Cli < Thor
     twentytwo twentythree twentyfour twentyfive
   ]
 
-  desc 'execute DAY', 'Run day parts'
+  desc 'exec DAY', 'Run day parts'
   option :year, type: :numeric, default: Time.now.year
-  def execute(day, part = 'both')
+  def exec(day, part = 'both')
     require "advent_of_code/#{folder}/day_#{day}"
 
     if part == 'both'

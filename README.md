@@ -12,9 +12,9 @@ $ ./exe/aoc gen one --year=2015
 
 # Execute exercises
 
-# ./exe/aoc execute <day> [part] --year=<year, default to current>
-$ ./exe/aoc execute one --year=2015
-$ ./exe/aoc execute one first --year=2015
+# ./exe/aoc exec <day> [part] --year=<year, default to current>
+$ ./exe/aoc exec one --year=2015
+$ ./exe/aoc exec one second --year=2015
 ```
 
 ## License
