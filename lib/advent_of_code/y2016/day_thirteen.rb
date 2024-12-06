@@ -34,14 +34,14 @@ class Node
   end
 
   def init_children!
-    @up = @@nodes["#{x},#{y - 1}"] ||= Node.new(x, y - 1, self) if @up.nil?
-    @right = @@nodes["#{x + 1},#{y}"] ||= Node.new(x + 1, y, self) if @right.nil?
-    @down = @@nodes["#{x},#{y + 1}"] ||= Node.new(x, y + 1, self) if @down.nil?
-    @left = @@nodes["#{x - 1},#{y}"] ||= Node.new(x - 1, y, self) if @left.nil?
+    @up = @@nodes["#{x},#{y - 1}"] ||= Node.new x, y - 1, self if @up.nil?
+    @right = @@nodes["#{x + 1},#{y}"] ||= Node.new x + 1, y, self if @right.nil?
+    @down = @@nodes["#{x},#{y + 1}"] ||= Node.new x, y + 1, self if @down.nil?
+    @left = @@nodes["#{x - 1},#{y}"] ||= Node.new x - 1, y, self if @left.nil?
   end
 
   def wall?
-    !((x * x + 3 * x + 2 * x * y + y + y * y) + INPUT).to_s(2).split('').count { |digit| digit == '1' }.even?
+    !(((x * x) + (3 * x) + (2 * x * y) + y + (y * y)) + INPUT).to_s(2).split('').count { |digit| digit == '1' }.even?
   end
 
   def to_s
@@ -78,7 +78,6 @@ end
 def second
   root = Node.new 1, 1, nil
   route = walk_maze_2 root, 50
-  require 'pry'; binding.pry
   route.size
   # 74 wrong
   # 75 wrong
@@ -89,7 +88,7 @@ def second
 end
 
 def walk_maze_2(root, limit)
-  visited = Set.new([root])
+  visited = Set.new [root]
 
   loop do
     current = root
@@ -115,7 +114,8 @@ def walk_maze_2(root, limit)
 end
 
 def walk_maze(root)
-  objx, objy = 31, 39
+  objx = 31
+  objy = 39
   current = root
   route = []
 
