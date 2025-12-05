@@ -3,8 +3,9 @@
 $LOAD_PATH.unshift './lib'
 
 require 'advent_of_code'
-require 'thor'
 require 'fileutils'
+require 'pry'
+require 'thor'
 
 class Cli < Thor
   DAYS = %w[
@@ -23,7 +24,7 @@ class Cli < Thor
       puts "[*] Day #{day} first part => #{first}"
       puts "[*] Day #{day} second part => #{second}"
     else
-      puts "[*] Day #{day} #{part} part => #{send(part)}"
+      puts "[*] Day #{day} #{part} part => #{send part}"
     end
   end
 
@@ -33,18 +34,18 @@ class Cli < Thor
     input_file = "inputs/#{folder}/day_#{day}.txt"
     src_file = "lib/advent_of_code/#{folder}/day_#{day}.rb"
 
-    template = <<-FILE
-def first
-  "first part"
-end
+    template = <<~FILE
+      def first
+        "first part"
+      end
 
-def second
-  "second part"
-end
+      def second
+        "second part"
+      end
 
-def input
-  open('#{input_file}').map(&:chomp)
-end
+      def input
+        open('#{input_file}').map(&:chomp)
+      end
     FILE
 
     FileUtils.mkdir_p "inputs/#{folder}"
@@ -65,15 +66,15 @@ end
         puts "Year #{year}"
 
         days = Dir
-          .children("lib/advent_of_code/y#{year}")
-          .select { |file| file.start_with? 'day_' }
-          .map { |file| file.gsub('day_', '').gsub('.rb', '') }
-          .sort { |a, b| DAYS.index(a) <=> DAYS.index(b) }
+               .children("lib/advent_of_code/y#{year}")
+               .select { |file| file.start_with? 'day_' }
+               .map { |file| file.gsub('day_', '').gsub('.rb', '') }
+               .sort { |a, b| DAYS.index(a) <=> DAYS.index(b) }
 
         days_to_show = options[:missing] ? (DAYS - days) : (DAYS & days)
 
         days_to_show.each do |file|
-          puts " - #{file.gsub('day_', '').gsub('.rb', '')}"
+          puts " - #{file.gsub("day_", "").gsub ".rb", ""}"
         end
       end
   end
